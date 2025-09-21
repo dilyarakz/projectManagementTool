@@ -2,6 +2,9 @@ package io.dilyara.ppmtool.domain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import java.util.Date;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -10,12 +13,13 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min = 1, max = 100, message = "Project name is required")
+    @NotBlank(message = "Project name is required")
     private String projectName;
+    @NotBlank(message = "Project Identifier is required")
     @Size(min=4, max=5, message = "Please use 4 to 5 characters")
     @Column(updatable = false, unique = true)
     private String projectIdentifier;
-    @Size(min = 10, max=500, message = "Project Description required")
+    @NotBlank(message = "Project Description required")
     private String description;
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date startDate;
