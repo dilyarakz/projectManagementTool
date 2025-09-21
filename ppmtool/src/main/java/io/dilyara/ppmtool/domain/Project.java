@@ -1,21 +1,29 @@
 package io.dilyara.ppmtool.domain;
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-
 import java.util.Date;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String projectName;
-    private String projectIdentifier;
-    private String description;
-    private Date startDate;
-    private Date endDate;
 
+    @Size(min = 1, max = 100, message = "Project name is required")
+    private String projectName;
+    @Size(min=4, max=5, message = "Please use 4 to 5 characters")
+    @Column(updatable = false, unique = true)
+    private String projectIdentifier;
+    @Size(min = 10, max=500, message = "Project Description required")
+    private String description;
+    @JsonFormat(pattern = "yyyy-mm-dd")
+    private Date startDate;
+    @JsonFormat(pattern = "yyyy-mm-dd")
+    private Date endDate;
+    @JsonFormat(pattern = "yyyy-mm-dd")
     private Date createdDate;
+    @JsonFormat(pattern = "yyyy-mm-dd")
     private Date updatedDate;
 
     public void setId(Long id) {
