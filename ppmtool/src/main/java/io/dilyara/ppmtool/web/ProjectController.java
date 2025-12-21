@@ -11,7 +11,6 @@ import org.springframework.validation.BindingResult;
 
 import org.springframework.web.bind.annotation.*;
 
-
 @RestController
 @RequestMapping("/api/project")
 public class ProjectController {
@@ -25,7 +24,8 @@ public class ProjectController {
     public ResponseEntity<?> createProject(@Valid @RequestBody Project project, BindingResult result) {
 
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
-        if (errorMap != null) return errorMap;
+        if (errorMap != null)
+            return errorMap;
 
         Project project1 = projectService.saveOrUpdateProject(project);
         return new ResponseEntity<Project>(project, HttpStatus.CREATED);
