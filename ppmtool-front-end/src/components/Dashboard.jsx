@@ -1,5 +1,7 @@
 import React from 'react'
 import { ProjectItem } from './Project/ProjectItem'
+import CreateProjectButton from './Project/CreateProjectButton'
+
 
 export const Dashboard = () => {
   return (
@@ -14,14 +16,7 @@ export const Dashboard = () => {
           </h1>
 
           {/* Create Button */}
-          <div className="text-center mb-6">
-            <a
-              href="ProjectForm.html"
-              className="inline-block bg-sky-500 hover:bg-sky-600 text-white text-lg font-medium px-6 py-3 rounded-lg transition"
-            >
-              Create a Project
-            </a>
-          </div>
+            <CreateProjectButton/>
 
           {/* Divider */}
           <hr className="border-gray-300 mb-6" />

@@ -1,5 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
+import { Link } from 'react-router-dom'
+
 
 
 export const Header = () => {
@@ -16,7 +18,7 @@ export const Header = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-4">
-            <a href="/dashboard" className="text-blue-300 hover:text-blue-200">Dashboard</a>
+            <Link to="/" className="text-blue-300 hover:text-blue-200">Dashboard</Link>
           </div>
         
           <div className="hidden md:flex space-x-4">
